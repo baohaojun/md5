@@ -8,10 +8,11 @@ COMPAT52_OBJS= src/compat-5.2.o
 
 MD5_OBJS= src/md5.o src/md5lib.o
 MD5_LUAS= src/md5.lua
-MD5_LIBNAME = core.so
+SO_SUFFIX ?= so
+MD5_LIBNAME = core.${SO_SUFFIX}
 
 DES56_OBJS= src/des56.o src/ldes56.o
-DES56_LIBNAME= des56.so
+DES56_LIBNAME= des56.${SO_SUFFIX}
 
 all: src/$(MD5_LIBNAME) src/$(DES56_LIBNAME)
 
@@ -23,7 +24,7 @@ src/$(DES56_LIBNAME) : $(DES56_OBJS) $(COMPAT52_OBJS)
 
 install: src/$(MD5_LIBNAME) src/$(DES56_LIBNAME)
 	mkdir -p $(LUA_LIBDIR)/md5
-	cp src/$(MD5_LIBNAME) $(LUA_LIBDIR)/md5/core.so
+	cp src/$(MD5_LIBNAME) $(LUA_LIBDIR)/md5/core.${SO_SUFFIX}
 	mkdir -p $(LUA_DIR)
 	cp $(MD5_LUAS) $(LUA_DIR)
 	cp src/$(DES56_LIBNAME) $(LUA_LIBDIR)

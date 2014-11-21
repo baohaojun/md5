@@ -1,19 +1,25 @@
-# Installation directories
+# Installation directories -*- mode: makefile -*-
 
 # Default prefix
-PREFIX = /usr/local
+PREFIX = ${HOME}/src/github/T1Wrench/
 
 # System's libraries directory (where binary libraries are installed)
-LUA_LIBDIR= $(PREFIX)/lib/lua/5.1
+LUA_LIBDIR= $(PREFIX)/lua/5.2
 
 # System's lua directory (where Lua libraries are installed)
-LUA_DIR= $(PREFIX)/share/lua/5.1
+LUA_DIR= $(PREFIX)/lua/5.2
 
 # Lua includes directory
-LUA_INC= $(PREFIX)/include
+LUA_INC= $(PREFIX)/lua/5.2
 
 # OS dependent
-LIB_OPTION= -shared #for Linux
+
+ifeq (${PLATFORM}, mingw)
+LIB_OPTION ?= -shared /home/bhj/src/github/T1Wrench//lua/5.2/lua52.dll #for Linux
+SO_SUFFIX ?= dll
+else ifeq (${PLATFORM}, macx)
+LIB_OPTION ?= -bundle -undefined dynamic_lookup #for MacOS X
+endif
 #LIB_OPTION= -bundle -undefined dynamic_lookup #for MacOS X
 
 # Compilation directives
