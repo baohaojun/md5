@@ -15,7 +15,7 @@ LUA_INC= $(PREFIX)/lua/5.2
 # OS dependent
 
 ifeq (${PLATFORM}, mingw)
-LIB_OPTION ?= -shared /home/bhj/src/github/T1Wrench//lua/5.2/lua52.dll #for Linux
+LIB_OPTION ?= -shared $(shell readlink -f ../lua/src/lua52.dll) #for Linux
 SO_SUFFIX ?= dll
 else ifeq (${PLATFORM}, macx)
 LIB_OPTION ?= -bundle -undefined dynamic_lookup #for MacOS X
