@@ -1,7 +1,7 @@
 # Installation directories -*- mode: makefile -*-
 
 # Default prefix
-PREFIX = ${HOME}/src/github/T1Wrench/
+PREFIX = ${HOME}/src/github/Wrench/
 
 # System's libraries directory (where binary libraries are installed)
 LUA_LIBDIR= $(PREFIX)/lua/5.2
